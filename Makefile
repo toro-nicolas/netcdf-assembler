@@ -17,7 +17,7 @@ SRCS		=	$(shell find . -path ./tests -prune -o -type f -name "*.cc" -print)
 
 OBJS     	=	$(patsubst ./%.cc, $(BUILDDIR)/%.o, $(SRCS))
 
-CFLAGS		=	-I./include/ #-Werror
+CFLAGS		=	-I./include/ -Werror
 DEBUGFLAGS	=	-g3
 OPTIMIZEFLAGS	=	-O3
 

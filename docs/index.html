@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 netcdf-assembler 🗺️</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#📚-netcdf-assembler-🗺️">📚 netcdf-assembler 🗺️</a>
+<ul>
+<li><a href="#table-of-contents-📑">Table of contents 📑</a></li>
+<li><a href="#description-📝">Description 📝</a></li>
+<li><a href="#usage-⚔️">Usage ⚔️</a></li>
+<li><a href="#compilation-🛠️">Compilation 🛠️</a></li>
+<li><a href="#documentation-📚">Documentation 📚</a></li>
+<li><a href="#code-mandatory-📦">Code mandatory 📦</a></li>
+<li><a href="#contributors-👤">Contributors 👤</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="📚-netcdf-assembler-🗺️">📚 netcdf-assembler 🗺️</h1>
+<h2 id="table-of-contents-📑">Table of contents 📑</h2>
+<ul>
+<li><a href="https://github.com/toro-nicolas/netcdf-assembler/blob/main/README.md#description-">Description</a></li>
+<li><a href="https://github.com/toro-nicolas/netcdf-assembler/blob/main/README.md#usage-%EF%B8%8F">Usage</a></li>
+<li><a href="https://github.com/toro-nicolas/netcdf-assembler/blob/main/README.md#compilation-%EF%B8%8F">Compilation</a></li>
+<li><a href="https://github.com/toro-nicolas/netcdf-assembler/blob/main/README.md#documentation-">Documentation</a></li>
+<li><a href="https://github.com/toro-nicolas/netcdf-assembler/blob/main/README.md#code-mandatory-">Code mandatory</a></li>
+<li><a href="https://github.com/toro-nicolas/netcdf-assembler/blob/main/README.md#contributors-">Contributors</a></li>
+</ul>
+<h2 id="description-📝">Description 📝</h2>
+<p>The <strong>netcdf-assembler</strong> is a project from my internship at <a href="https://www.seagnal.fr/">Seagnal</a>, during my <strong>2nd year</strong> in <a href="https://www.epitech.eu/"><strong>EPITECH</strong></a> Grand Ecole program.<br>
+Its purpose is to create in <a href="https://en.wikipedia.org/wiki/C%2B%2B"><strong>C++</strong></a> a program for assembling multiple <a href="https://en.wikipedia.org/wiki/NetCDF">NetCDF</a> (and <a href="https://en.wikipedia.org/wiki/GRIB">GRIB</a>) files into one large NetCDF file.</p>
+<h2 id="usage-⚔️">Usage ⚔️</h2>
+<p>You can run netcdf-assembler like this :</p>
+<pre class=" language-sh"><code class="prism  language-sh">./netcdf-assembler result_file.nc part1.nc part2.nc part3.nc  
+</code></pre>
+<p>For more information, please see the help section.</p>
+<pre class=" language-sh"><code class="prism  language-sh">&gt; ./netcdf-assembler --help  
+Usage: ./netcdf-assembler output_file files  
+  
+DESCRIPTION  
+ Assembles multiple NetCDF (and GRIB) files into one large NetCDF file.  
+</code></pre>
+<h2 id="compilation-🛠️">Compilation 🛠️</h2>
+<p><a href="https://docs.unidata.ucar.edu/netcdf-c/current/"><strong>NetCDF lib</strong></a> is required to compile the project.</p>
+<p>You can compile the project with this command :</p>
+<pre class=" language-sh"><code class="prism  language-sh">make  
+</code></pre>
+<p>If you want to debug the program, you can compile the project with this :</p>
+<pre class=" language-sh"><code class="prism  language-sh">make debug   
+</code></pre>
+<p>If you want clean the project, you can run this command :</p>
+<pre class=" language-sh"><code class="prism  language-sh">make fclean  
+</code></pre>
+<p>You can clean and compile the project with <code>make re</code> and for debugging <code>make re_debug</code></p>
+<p>You can compile the unit tests with this command :</p>
+<pre class=" language-sh"><code class="prism  language-sh">make unit_tests  
+</code></pre>
+<h2 id="documentation-📚">Documentation 📚</h2>
+<p>The documentation is accessible <a href="https://toro-nicolas.github.io/netcdf-assembler/html/">here</a>.</p>
+<p>You can generate the documentation with this command :</p>
+<pre class=" language-sh"><code class="prism  language-sh">make doc  
+</code></pre>
+<p>You need multiple package for generate them :</p>
+<ul>
+<li>doxygen</li>
+<li>doxygen-latex</li>
+<li>doxygen-doxywizard</li>
+<li>graphviz</li>
+</ul>
+<h2 id="code-mandatory-📦">Code mandatory 📦</h2>
+<ul>
+<li>You’ll need to create a branch where you’ll push your code. Once you’ve completed your tasks on this branch, we’ll work together to merge it and check that everything works.</li>
+<li>Every function you add must be documented and code-style with Seagnal’s coding style.</li>
+<li>If the github actions don’t succeed, then ask yourself some questions</li>
+<li>Each commit will contain <code>[+]</code> or <code>[-]</code> or <code>[~]</code> followed by a message
+<ul>
+<li><code>[+]</code> : Add feature</li>
+<li><code>[-]</code> : Delete feature</li>
+<li><code>[~]</code> : Edit feature</li>
+</ul>
+</li>
+</ul>
+<p><strong>Of course, in exceptional cases, we may depart from these rules.</strong></p>
+<h2 id="contributors-👤">Contributors 👤</h2>
+<p>This project was carried out alone by <a href="https://github.com/toro-nicolas"><strong>Nicolas TORO</strong></a>.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
