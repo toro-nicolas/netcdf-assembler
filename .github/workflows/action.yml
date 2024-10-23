@@ -1,9 +1,9 @@
-name: netcdf-display
+name: netcdf-assembler
 
 on: [push, pull_request]
 
 env:
-  EXECUTABLE: netcdf-display
+  EXECUTABLE: netcdf-assembler
 
 jobs:
   check_program:
