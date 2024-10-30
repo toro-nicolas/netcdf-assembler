@@ -38,7 +38,11 @@
     #define BOLD "\033[1m"
     #define UNDERLINE "\033[4m"
     #define RESET "\033[0m"
-    #define DEBUG (std::cout << YELLOW << "FILE: " << __FILE__ << ":" << __LINE__ << ", FUNCTION: " << __PRETTY_FUNCTION__ << RESET << std::endl)
+    #ifdef DEBUG_MODE
+        #define DEBUG (std::cout << YELLOW << "FILE: " << __FILE__ << ":" << __LINE__ << ", FUNCTION: " << __PRETTY_FUNCTION__ << RESET << std::endl)
+    #else
+        #define DEBUG
+    #endif
     #define ERROR(ec) check_error(ec, __FILE__, __LINE__, __PRETTY_FUNCTION__)
 
 /* The variable types */

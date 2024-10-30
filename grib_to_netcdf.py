@@ -1,5 +1,6 @@
 import argparse
 import xarray as xr
+import sys
 
 def grib_to_netcdf(grib_file, nc_file):
     ds = xr.open_dataset(grib_file, engine='cfgrib')
@@ -28,4 +29,7 @@ if __name__ == "__main__":
     parser.add_argument('input', type=str, help='The GRIB file to convert.')
     parser.add_argument('output', type=str, help='The path to the NetCDF converted file.')
     args = parser.parse_args()
-    grib_to_netcdf(args.input, args.output)
+    try:
+        grib_to_netcdf(args.input, args.output)
+    except:
+        print("Cannot convert GRIB to NetCDF. File is not in a valid GRIB format.", file=sys.stderr)

@@ -24,7 +24,9 @@ void check_error(int in_i_error, const char *in_ac_file,
                  const int in_i_line, const char *in_ac_func)
 {
     if (in_i_error != 0) {
+        #ifdef DEBUG_MODE
         std::cerr << RED BOLD "ERROR: " RESET RED << in_ac_file << ":" << in_i_line << ": " << in_ac_func << RESET << std::endl;
+        #endif
         std::cerr << RED BOLD "Error information: " RESET RED << nc_strerror(in_i_error) << RESET << std::endl;
         std::exit(EXIT_FAILURE);
     }
