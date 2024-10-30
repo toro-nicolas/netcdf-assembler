@@ -8,7 +8,6 @@
 NAME		=	netcdf-assembler
 
 CC		=	g++
-DEBUG_MODE	=
 
 BUILDDIR 	=	./build
 SRCDIR		=	./src
@@ -18,7 +17,7 @@ SRCS		=	$(shell find . -path ./tests -prune -o -type f -name "*.cc" -print)
 OBJS     	=	$(patsubst ./%.cc, $(BUILDDIR)/%.o, $(SRCS))
 
 CFLAGS		=	-I./include/ -Werror
-DEBUGFLAGS	=	-g3
+DEBUGFLAGS	=	-g3 -DDEBUG_MODE
 OPTIMIZEFLAGS	=	-O3
 
 LDFLAGS 	=	-lnetcdf -lm
@@ -37,7 +36,6 @@ $(BUILDDIR)/%.o: ./%.cc
 
 debug: CFLAGS += $(DEBUGFLAGS)
 debug: OPTIMIZEFLAGS =
-debug: DEBUG_MODE = debug
 debug: all
 
 $(NAME): $(OBJS)

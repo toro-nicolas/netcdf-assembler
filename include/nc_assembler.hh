@@ -10,25 +10,25 @@
  * @author Nicolas TORO
  */
 
-#include <netcdf.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <unistd.h>
-#include <stdbool.h>
-#include <errno.h>
-#include <string.h>
-#include <fcntl.h>
-#include <math.h>
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <stdexcept>
-#include <variant>
-#include <wait.h>
+#include <cerrno>
+#include <cmath>
+#include <cstdbool>
+#include <cstddef>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <fcntl.h>
+#include <iostream>
 #include <libgen.h>
 #include <linux/limits.h>
+#include <netcdf.h>
+#include <stdexcept>
+#include <unistd.h>
+#include <variant>
+#include <vector>
+#include <wait.h>
 
 #ifndef NC_ASSEMBLER_HH_
     #define NC_ASSEMBLER_HH_

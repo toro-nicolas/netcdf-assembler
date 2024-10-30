@@ -202,7 +202,6 @@ void assembler::add_data_to_dim_variable(size_t in_i_file,
                                          variable_information_t & in_s_input_var,
                                          variable_information_t & in_s_output_var)
 {
-    int32_t ec = 0;
     static size_t ai_count[NC_MAX_VAR_DIMS] = {0};
     size_t *ai_input_start = (size_t *)calloc(in_s_input_var.i_ndims, sizeof(size_t));
     size_t *ai_output_start = get_end_variable_start(_s_output_file, in_s_output_var);
@@ -345,7 +344,6 @@ void assembler::add_data_to_variable(size_t in_i_file,
                                      variable_information_t & in_s_input_var,
                                      variable_information_t & in_s_output_var)
 {
-    int32_t ec = 0;
     static size_t ai_count[NC_MAX_VAR_DIMS] = {0};
 
     update_variable_size(_s_output_file, in_s_output_var);
@@ -354,7 +352,6 @@ void assembler::add_data_to_variable(size_t in_i_file,
         ai_count[i_count_index] = 1;
     size_t *ai_output_start = get_start_from_input(in_i_file, in_s_input_var, in_s_output_var, ai_input_start);
     size_t *ai_output_start_ref = get_start_from_input(in_i_file, in_s_input_var, in_s_output_var, ai_input_start);
-    float *value = NULL;
     for (size_t index = 0; index < in_s_input_var.i_data_size; index++) {
         switch (in_s_output_var.i_type) {
             case 1: {
@@ -429,8 +426,10 @@ void assembler::add_data_to_variable(size_t in_i_file,
     free(ai_input_start);
     free(ai_output_start);
     free(ai_output_start_ref);
+    #ifdef DEBUG_MODE
     std::cout << "Fill: FILE = " << _vs_input_files[in_i_file].ac_path
         << " | VAR = " << in_s_output_var.ac_var_name << std::endl;
+    #endif
 }
 
 /**
@@ -464,30 +463,34 @@ void assembler::copy_variables(void)
                 for (int32_t i_index_dim = 0; i_index_dim < s_current_var.i_ndims; i_index_dim++)
                     s_new_var.ai_dimids[i_index_dim] = _vs_input_files[i_input_index].
                         vs_dims[s_current_var.ai_dimids[i_index_dim]].i_output_id;
-                ec = nc_def_var(_s_output_file.i_file_id, s_current_var.ac_var_name,
-                s_current_var.i_type, s_current_var.i_ndims, s_new_var.ai_dimids, &s_new_var.i_id);
+                strcpy(s_new_var.ac_var_name, s_current_var.ac_var_name);
+                s_new_var.i_ndims = s_current_var.i_ndims;
+                s_new_var.i_type = s_current_var.i_type;
+                ec = nc_def_var(_s_output_file.i_file_id, s_new_var.ac_var_name,
+                    s_new_var.i_type, s_new_var.i_ndims, s_new_var.ai_dimids, &s_new_var.i_id);
                 if (ec != 0) {
                     DEBUG;
                     fprintf(stderr, RED BOLD "Set variable:" RESET RED " %s: %s: %s\n" RESET,
                         _s_output_file.ac_path, s_current_var.ac_var_name, nc_strerror(ec));
                     std::exit(EXIT_FAILURE);
                 }
-                strcpy(s_new_var.ac_var_name, s_current_var.ac_var_name);
-                s_new_var.i_ndims = s_current_var.i_ndims;
-                s_new_var.i_type = s_current_var.i_type;
-                ERROR(nc_inq_dimid(_s_output_file.i_file_id, s_new_var.ac_var_name, &s_new_var.i_dim_id));
+                nc_inq_dimid(_s_output_file.i_file_id, s_new_var.ac_var_name, &s_new_var.i_dim_id);
                 copy_attributes(i_input_index, s_current_var, s_new_var);
                 _s_output_file.vs_variables.push_back(s_new_var);
+                #ifdef DEBUG_MODE
                 std::cout << "Add: FILE = " << _vs_input_files[i_input_index].ac_path
                     << " | VAR = " << s_current_var.ac_var_name << std::endl;
+                #endif
             }
             s_current_var.i_output_id = s_new_var.i_id;
             update_variable_size(_vs_input_files[i_input_index], s_current_var);
-            ERROR(nc_inq_dimid(_vs_input_files[i_input_index].i_file_id, s_current_var.ac_var_name, &s_current_var.i_dim_id));
+            nc_inq_dimid(_vs_input_files[i_input_index].i_file_id, s_current_var.ac_var_name, &s_current_var.i_dim_id);
             if (_s_output_file.vs_variables[s_new_var.i_id].i_dim_id != -1) {
                 add_data_to_dim_variable(i_input_index, s_current_var, _s_output_file.vs_variables[s_new_var.i_id]);
+                #ifdef DEBUG_MODE
                 std::cout << "Fill: FILE = " << _vs_input_files[i_input_index].ac_path
                     << " | VAR = " << s_current_var.ac_var_name << std::endl;
+                #endif
             }
             _vs_input_files[i_input_index].vs_variables.push_back(s_current_var);
         }

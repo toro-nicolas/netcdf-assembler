@@ -24,7 +24,6 @@ void open_file(file_information_t & in_s_file_info, int in_i_mode)
 
     if (ec != 0) {
         char ac_exe_path[PATH_MAX] = {0};
-        bool b_subfolder = false;
         int32_t i_len = readlink("/proc/self/exe", ac_exe_path, sizeof(ac_exe_path) - 1);
         if (i_len == -1) {
             fprintf(stderr, RED BOLD "Error: " RESET RED " Cannot find grib_to_netcdf.py\n" RESET);
@@ -33,8 +32,6 @@ void open_file(file_information_t & in_s_file_info, int in_i_mode)
         for (int32_t i_index = i_len; i_index > -1; i_index--) {
             if (ac_exe_path[i_index] != '/')
                 ac_exe_path[i_index] = '\0';
-            else if (b_subfolder == false)
-                b_subfolder = true;
             else
                 break;
         }
@@ -45,7 +42,7 @@ void open_file(file_information_t & in_s_file_info, int in_i_mode)
                 i_file_name_index = i_index + 1;
         }
         std::string str_output = "/tmp/" + std::string(in_s_file_info.ac_path + i_file_name_index) + ".nc";
-        const char *astr_convert_args[] = {"/usr/bin/python3", ac_exe_path, in_s_file_info.ac_path, (char *)str_output.c_str(), NULL};
+        const char *astr_convert_args[] = {"/usr/bin/python3", ac_exe_path, in_s_file_info.ac_path, (char *)str_output.c_str(), nullptr};
         int32_t i_status = 0;
         pid_t i_pid = fork();
         char **astr_env = environ;
@@ -122,5 +119,3 @@ void close_file(file_information_t & in_s_file_info)
         std::exit(EXIT_FAILURE);
     }
 }
-
-
