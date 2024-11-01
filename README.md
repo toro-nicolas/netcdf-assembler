@@ -51,11 +51,6 @@ make fclean
 
 You can clean and compile the project with ```make re``` and for debugging ```make re_debug```
 
-You can compile the unit tests with this command :
-```sh
-make unit_tests
-```
-
 
 ## Documentation 📚
 The documentation is accessible [here](https://toro-nicolas.github.io/netcdf-assembler/html/).

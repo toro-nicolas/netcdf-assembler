@@ -107,25 +107,25 @@ $(function(){initNavTree('nc__assembler_8hh.html',''); initResizable(true); });
 
 <p>The header file of the project.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;netcdf.h&gt;</code><br />
-<code>#include &lt;stddef.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;cerrno&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;cstdbool&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;cstdio&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;fcntl.h&gt;</code><br />
-<code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
-<code>#include &lt;variant&gt;</code><br />
-<code>#include &lt;wait.h&gt;</code><br />
 <code>#include &lt;libgen.h&gt;</code><br />
 <code>#include &lt;linux/limits.h&gt;</code><br />
+<code>#include &lt;netcdf.h&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;variant&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;wait.h&gt;</code><br />
 </div>
 <p><a href="nc__assembler_8hh_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -158,7 +158,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RESET</b>&#160;&#160;&#160;&quot;\033[0m&quot;</td></tr>
 <tr class="separator:ab702106cf3b3e96750b6845ded4e0299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad72dbcf6d0153db1b8d8a58001feed83" id="r_ad72dbcf6d0153db1b8d8a58001feed83"><td class="memItemLeft" align="right" valign="top"><a id="ad72dbcf6d0153db1b8d8a58001feed83" name="ad72dbcf6d0153db1b8d8a58001feed83"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG</b>&#160;&#160;&#160;(std::cout &lt;&lt; YELLOW &lt;&lt; &quot;FILE: &quot; &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;, FUNCTION: &quot; &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; RESET &lt;&lt; std::endl)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG</b></td></tr>
 <tr class="separator:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff6957a9b9837fe3011d572a7001d70f" id="r_aff6957a9b9837fe3011d572a7001d70f"><td class="memItemLeft" align="right" valign="top"><a id="aff6957a9b9837fe3011d572a7001d70f" name="aff6957a9b9837fe3011d572a7001d70f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ERROR</b>(ec)&#160;&#160;&#160;<a class="el" href="#afdbb37ee9ee70c7d7829843752753182">check_error</a>(ec, __FILE__, __LINE__, __PRETTY_FUNCTION__)</td></tr>
